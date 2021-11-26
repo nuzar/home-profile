@@ -13,6 +13,8 @@ in
       starship
     ];
 
+    # source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+    # if shell program is not managed by home-manager
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
