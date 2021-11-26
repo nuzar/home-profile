@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   locale = "C.UTF-8";
   homedir = builtins.getEnv "HOME";
@@ -10,6 +10,7 @@ in
     packages = with pkgs; [
       ripgrep
       antibody
+      starship
     ];
 
     sessionVariables = {
@@ -28,26 +29,5 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      aws = { disabled = true; };
-      battery = { disabled = true; };
-      directory = { 
-        truncation_length = 0;
-        truncate_to_repo = false;
-      };
-      git_branch = {
-        format = "[$symbol$branch]($style) ";
-      };
-      golang = { disabled = true; };
-      nodejs = { disabled = true; };
-      package = { disabled = true; };
-      python = {
-        pyenv_version_name = true;
-      };
-      rust = { disabled = true; };
-    };
-  };
+  xdg.configFile."starship.toml" = { source = ./starship.toml; };
 }
