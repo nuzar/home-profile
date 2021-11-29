@@ -6,11 +6,15 @@ let
 in
 {
   home = {
-    #pkgs
+    # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
     packages = with pkgs; [
       ripgrep
       antibody
       starship
+      zsh
+      direnv
+      fzf
+      rnix-lsp
     ];
 
     # source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
@@ -31,5 +35,9 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  home.file.".zshenv" = { source = ./zshenv; };
+  xdg.configFile."zsh" = { source = ./zsh; recursive = true; };
+  home.file.".profile" = { source = ./.profile; };
+  home.file.".alias" = { source = ./.alias; };
   xdg.configFile."starship.toml" = { source = ./starship.toml; };
 }
