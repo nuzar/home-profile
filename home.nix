@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  locale = "C.UTF-8";
+  locale = "en_US.UTF-8";
   homedir = builtins.getEnv "HOME";
   username = builtins.getEnv "USER";
 in
@@ -8,13 +8,18 @@ in
   home = {
     # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
     packages = with pkgs; [
-      ripgrep
       antibody
-      starship
-      zsh
       direnv
       fzf
+      gitFull
+      htop
+      neovim
+      ripgrep
       rnix-lsp
+      starship
+      v2ray
+      v2ray-domain-list-community
+      zsh
     ];
 
     # source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
@@ -40,4 +45,5 @@ in
   home.file.".profile" = { source = ./.profile; };
   home.file.".alias" = { source = ./.alias; };
   xdg.configFile."starship.toml" = { source = ./starship.toml; };
+  xdg.configFile."nvim" = { source = ./nvim; recursive = true; };
 }

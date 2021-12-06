@@ -7,7 +7,6 @@ $git_state\
 $git_status\
 $cmd_duration\
 $line_break\
-$python\
 $character"""
 
 [character]
@@ -23,10 +22,10 @@ truncation_length = 0
 disabled = true
 
 [git_branch]
-symbol = "b: "
+symbol = "b:"
 
 [git_commit]
-tag_symbol = " t: "
+tag_symbol = " t:"
 
 [git_status]
 ahead = ">"
