@@ -1,6 +1,4 @@
-alias mongoc='docker run -it --rm --net=host mongo mongo '
 alias vi='nvim '
-alias teledocker='telepresence --docker-run -it registry.cn-zhangjiakou.aliyuncs.com/xiaoduoai/python:v3.6.8 bash'
 alias gco='git checkout '
 alias gcm='git checkout master '
 alias gl='git pull'
