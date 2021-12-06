@@ -44,7 +44,7 @@ EOF
 eval "$(starship init zsh)"
 
 #eval `pip completion --zsh`
-source <(kubectl completion zsh)
+which kubectl &>/dev/null && source <(kubectl completion zsh)
 
 alias k=kubectl
 complete -F __start_kubectl k
