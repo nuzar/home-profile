@@ -1,0 +1,7 @@
+alias vi='nvim '
+alias gco='git checkout '
+alias gcm='git checkout master '
+alias gl='git pull'
+alias gs='git status'
+alias docker='podman '
+alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
