@@ -29,10 +29,10 @@ ohmyzsh/ohmyzsh path:lib
 zsh-users/zsh-syntax-highlighting    
 zsh-users/zsh-completions    
 zsh-users/zsh-autosuggestions 
-ohmyzsh/ohmyzsh path:plugins/git    
-ohmyzsh/ohmyzsh path:plugins/pip    
+#ohmyzsh/ohmyzsh path:plugins/git    
+#ohmyzsh/ohmyzsh path:plugins/pip    
 #ohmyzsh/ohmyzsh path:plugins/kubectl    
-ohmyzsh/ohmyzsh path:plugins/golang    
+#ohmyzsh/ohmyzsh path:plugins/golang    
 #ohmyzsh/ohmyzsh path:plugins/docker    
 #ohmyzsh/ohmyzsh path:plugins/command-not-found    
 # theme    
@@ -44,10 +44,10 @@ EOF
 eval "$(starship init zsh)"
 
 #eval `pip completion --zsh`
+
 which kubectl &>/dev/null && source <(kubectl completion zsh)
-
 alias k=kubectl
-complete -F __start_kubectl k
+#complete -F __start_kubectl k
 
-source $HOME/.nix-profile/share/fzf/completion.zsh     
-source $HOME/.nix-profile/share/fzf/key-bindings.zsh
+source /etc/zsh_completion.d/fzf-key-bindings
+
