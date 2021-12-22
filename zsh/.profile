@@ -8,16 +8,6 @@ export LC_ALL="en_US.UTF-8"
 
 export TMUX_TMPDIR="/tmp"
 
-# nix
-# variables managed by home-manager
-hmvar="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-test -r "$hmvar" && source "$hmvar"
-
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-if [ -e /home/lyf/.nix-profile/etc/profile.d/nix.sh ]; then 
-  . /home/lyf/.nix-profile/etc/profile.d/nix.sh; 
-fi
-
 # ssh
 if ! pgrep -u "$USER" ssh-agent &> /dev/null; then
     ssh-agent > "/tmp/ssh-agent.env"

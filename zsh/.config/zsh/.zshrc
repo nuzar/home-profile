@@ -13,6 +13,8 @@ SAVEHIST=$HISTSIZE
 setopt extended_history       # record timestamp of command in HISTFILE    
 setopt share_history          # share command history data
 
+unsetopt   recexact
+
 autoload -Uz compinit
 compinit
 
