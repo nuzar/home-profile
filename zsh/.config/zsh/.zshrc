@@ -27,7 +27,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 
 antibody bundle <<EOF
 # plugins
-ohmyzsh/ohmyzsh path:lib
+#ohmyzsh/ohmyzsh path:lib
 zsh-users/zsh-syntax-highlighting    
 zsh-users/zsh-completions    
 zsh-users/zsh-autosuggestions 

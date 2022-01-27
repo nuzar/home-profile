@@ -48,7 +48,7 @@ test -r $HOME/.cargo/env && source $HOME/.cargo/env
 export PYCURL_SSL_LIBRARY=nss
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+eval "$(pyenv init - zsh)"
 
 # js
 export PATH=$PATH:~/.yarn/bin
