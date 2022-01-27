@@ -1,55 +1,38 @@
-if test ! -r /etc/zshrc; then
-	source $HOME/.config/zsh/suse-zshrc
-fi
+#!/bin/zsh
+#
+# This file, .zshrc, is sourced by zsh for each interactive shell session.
+#
+# Note: For historical reasons, there are other dotfiles, besides .zshenv and
+# .zshrc, that zsh reads, but there is really no need to use those.
 
 # User configuration
 if [[ PROFILE_IMPORTED -ne 1 ]] {
     test -r ~/.profile && source ~/.profile
 }
 
-HISTFILE="$HOME/.zsh_history"    
-HISTSIZE=10000    
-SAVEHIST=$HISTSIZE    
-setopt extended_history       # record timestamp of command in HISTFILE    
-setopt share_history          # share command history data
+# The construct below is what Zsh calls an anonymous function; most other
+# languages would call this a lambda or scope function. It gets called right
+# away with the arguments provided and is then discarded.
+# Here, it enables us to use scoped variables in our dotfiles.
+() {
+  # `local` sets the variable's scope to this function and its descendendants.
+  # local gitdir=~/Git  # Where to keep repos and plugins
 
-unsetopt   recexact
-
-autoload -Uz compinit
-compinit
-
-source <(antibody init)
-
-# some omz plugins need this
-export ZSH="$(antibody path ohmyzsh/ohmyzsh)"
-DISABLE_MAGIC_FUNCTIONS=true
-#export ZSH_CACHE_DIR=$HOME/.zsh/cache
-
-antibody bundle <<EOF
-# plugins
-#ohmyzsh/ohmyzsh path:lib
-zsh-users/zsh-syntax-highlighting    
-zsh-users/zsh-completions    
-zsh-users/zsh-autosuggestions 
-#ohmyzsh/ohmyzsh path:plugins/git    
-#ohmyzsh/ohmyzsh path:plugins/pip    
-#ohmyzsh/ohmyzsh path:plugins/kubectl    
-#ohmyzsh/ohmyzsh path:plugins/golang    
-#ohmyzsh/ohmyzsh path:plugins/docker    
-#ohmyzsh/ohmyzsh path:plugins/command-not-found    
-# theme    
-#mafredri/zsh-async    
-#sindresorhus/pure
-#romkatv/powerlevel10k
-EOF
-
-eval "$(starship init zsh)"
-
-#eval `pip completion --zsh`
-
-which kubectl &>/dev/null && source <(kubectl completion zsh)
-alias k=kubectl
-#complete -F __start_kubectl k
-
-source /etc/zsh_completion.d/fzf-key-bindings
-
+  # Load all of the files in rc.d that start with <number>- and end in .zsh
+  # (n) sorts the results in numerical order.
+  # <-> is an open-ended range. It matches any non-negative integer.
+  # <1-> matches any integer >= 1. <-9> matches any integer <= 9.
+  # <1-9> matches any integer that's >= 1 and <= 9.
+  local file=
+  for file in $ZDOTDIR/rc.d/<->-*.zsh(n); do
+    echo "$(date) load $file"
+    . $file
+  done
+  echo "$(date) loading finish"
+} "$@"
+# $@ expands to all the arguments that were passed to the current context (in
+# this case, to `zsh` itself).
+# "Double quotes" ensures that empty arguments '' are preserved.
+# It's a good practice to pass "$@" by default. You'd be surprised at all the
+# bugs you avoid this way.
+echo "$(date) finish anonymous function"
