@@ -1,53 +1,85 @@
 #!/bin/zsh
 
-##
 # Key bindings
-#
-# zsh-autocomplete and zsh-edit add many useful keybindings. See each of their
-# respective docs for the full list:
-# https://github.com/marlonrichert/zsh-autocomplete/blob/main/README.md#key-bindings
-# https://github.com/marlonrichert/zsh-edit/blob/main/README.md#key-bindings
-#
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/key-bindings.zsh
 
-# Enable the use of Ctrl-Q and Ctrl-S for keyboard shortcuts.
-# unsetopt FLOW_CONTROL
 
-# Alt-H: Get help on your current command.
-# () {
-#   unalias $1 2> /dev/null   # Remove the default.
+# Use emacs key bindings
+bindkey -e
 
-#   # Load the more advanced version.
-#   # -R resolves the function immediately, so we can access the source dir.
-#   autoload -UzR $1
+# [PageUp] - Up a line of history
+if [[ -n "${terminfo[kpp]}" ]]; then
+  bindkey -M emacs "${terminfo[kpp]}" up-line-or-history
+  bindkey -M viins "${terminfo[kpp]}" up-line-or-history
+  bindkey -M vicmd "${terminfo[kpp]}" up-line-or-history
+fi
+# [PageDown] - Down a line of history
+if [[ -n "${terminfo[knp]}" ]]; then
+  bindkey -M emacs "${terminfo[knp]}" down-line-or-history
+  bindkey -M viins "${terminfo[knp]}" down-line-or-history
+  bindkey -M vicmd "${terminfo[knp]}" down-line-or-history
+fi
 
-#   # Load the hash table that maps each function to its source file.
-#   zmodload -F zsh/parameter p:functions_source
+# [Home] - Go to beginning of line
+if [[ -n "${terminfo[khome]}" ]]; then
+  bindkey -M emacs "${terminfo[khome]}" beginning-of-line
+  bindkey -M viins "${terminfo[khome]}" beginning-of-line
+  bindkey -M vicmd "${terminfo[khome]}" beginning-of-line
+fi
+# [End] - Go to end of line
+if [[ -n "${terminfo[kend]}" ]]; then
+  bindkey -M emacs "${terminfo[kend]}"  end-of-line
+  bindkey -M viins "${terminfo[kend]}"  end-of-line
+  bindkey -M vicmd "${terminfo[kend]}"  end-of-line
+fi
 
-#   # Lazy-load all the run-help-* helper functions from the same dir.
-#   autoload -Uz $functions_source[$1]-*~*.zwc  # Exclude .zwc files.
-# } run-help
+# [Shift-Tab] - move through the completion menu backwards
+if [[ -n "${terminfo[kcbt]}" ]]; then
+  bindkey -M emacs "${terminfo[kcbt]}" reverse-menu-complete
+  bindkey -M viins "${terminfo[kcbt]}" reverse-menu-complete
+  bindkey -M vicmd "${terminfo[kcbt]}" reverse-menu-complete
+fi
 
-# Alt-Q
-# - On the main prompt: Push aside your current command line  so you can type a
-#   new one. The old command line is restored when you press Alt-G or once
-#   you've accepted the new command line.
-# - On the continuation prompt: Return to the main prompt.
-#bindkey '^[q' push-line-or-edit
+# [Backspace] - delete backward
+bindkey -M emacs '^?' backward-delete-char
+bindkey -M viins '^?' backward-delete-char
+bindkey -M vicmd '^?' backward-delete-char
 
-# Alt-V: Show the next key combo's terminal code and state what it does.
-#bindkey '^[v' describe-key-briefly
+# [Delete] - delete forward
+if [[ -n "${terminfo[kdch1]}" ]]; then
+  bindkey -M emacs "${terminfo[kdch1]}" delete-char
+  bindkey -M viins "${terminfo[kdch1]}" delete-char
+  bindkey -M vicmd "${terminfo[kdch1]}" delete-char
+else
+  bindkey -M emacs "^[[3~" delete-char
+  bindkey -M viins "^[[3~" delete-char
+  bindkey -M vicmd "^[[3~" delete-char
 
-# Alt-Shift-S: Prefix the current or previous command line with `sudo`.
-# () {
-#   bindkey '^[S' $1  # Bind Alt-Shift-S to the widget below.
-#   zle -N $1         # Create a widget that calls the function below.
-#   $1() {            # Create the function.
-#     [[ -z $BUFFER ]] && zle .up-history
-#     LBUFFER="sudo $LBUFFER"   # Use $LBUFFER to preserve cursor position.
-#   }
-# } .sudo
+  bindkey -M emacs "^[3;5~" delete-char
+  bindkey -M viins "^[3;5~" delete-char
+  bindkey -M vicmd "^[3;5~" delete-char
+fi
 
-# ctrl + <-
-bindkey "^[[1;5D" backward-word
-# ctrl + ->
-bindkey "^[[1;5C" forward-word
+# [Ctrl-Delete] - delete whole forward-word
+bindkey -M emacs '^[[3;5~' kill-word
+bindkey -M viins '^[[3;5~' kill-word
+bindkey -M vicmd '^[[3;5~' kill-word
+
+# [Ctrl-RightArrow] - move forward one word
+bindkey -M emacs '^[[1;5C' forward-word
+bindkey -M viins '^[[1;5C' forward-word
+bindkey -M vicmd '^[[1;5C' forward-word
+# [Ctrl-LeftArrow] - move backward one word
+bindkey -M emacs '^[[1;5D' backward-word
+bindkey -M viins '^[[1;5D' backward-word
+bindkey -M vicmd '^[[1;5D' backward-word
+
+# up
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+# down
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# ctrl + w
+autoload -U select-word-style
+select-word-style bash
+export WORDCHARS='.-'

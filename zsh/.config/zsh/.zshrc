@@ -5,6 +5,15 @@
 # Note: For historical reasons, there are other dotfiles, besides .zshenv and
 # .zshrc, that zsh reads, but there is really no need to use those.
 
+DEBUG=
+
+function debug_log() {
+  if test -z $DEBUG; then
+    return
+  fi
+  echo "$(date)" "$@"
+}
+
 # User configuration
 if [[ PROFILE_IMPORTED -ne 1 ]] {
     test -r ~/.profile && source ~/.profile
@@ -25,14 +34,14 @@ if [[ PROFILE_IMPORTED -ne 1 ]] {
   # <1-9> matches any integer that's >= 1 and <= 9.
   local file=
   for file in $ZDOTDIR/rc.d/<->-*.zsh(n); do
-    echo "$(date) load $file"
+    debug_log "load $file"
     . $file
   done
-  echo "$(date) loading finish"
+  debug_log "loading finish"
 } "$@"
 # $@ expands to all the arguments that were passed to the current context (in
 # this case, to `zsh` itself).
 # "Double quotes" ensures that empty arguments '' are preserved.
 # It's a good practice to pass "$@" by default. You'd be surprised at all the
 # bugs you avoid this way.
-echo "$(date) finish anonymous function"
+debug_log "finish anonymous function"
