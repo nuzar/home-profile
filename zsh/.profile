@@ -26,8 +26,8 @@ export PATH=$PATH:$(go env GOPATH)/bin
 #export PATH=$PATH:~/tools/FlameGraph
 
 # proxy
-proxy_host=127.0.0.1
-#proxy_host="$(tail -1 /etc/resolv.conf | cut -d' ' -f2)"
+#proxy_host=localhost
+proxy_host="$(tail -1 /etc/resolv.conf | cut -d' ' -f2)"
 set_proxy() {
   export http_proxy=http://${proxy_host}:1080
   export https_proxy=http://${proxy_host}:1080

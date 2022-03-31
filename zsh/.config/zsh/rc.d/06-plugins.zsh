@@ -41,6 +41,9 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
     HISTORY_SUBSTRING_SEARCH_PREFIXED=1
+#mafredri/zsh-async
+#sindresorhus/pure
+#zplug "romkatv/powerlevel10k"
 
 
 # Install plugins if there are plugins that have not been installed
