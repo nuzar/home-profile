@@ -36,3 +36,6 @@ fi
 
 autoload -Uz compinit
 compinit
+
+# don't make ssh completion based on hosts file
+zstyle ':completion:*:ssh:*' hosts off

@@ -40,9 +40,8 @@
 # Use `< file` to quickly view the contents of any file.
 #READNULLCMD=$PAGER  # Set the program to use for this.
 
-which kubectl &>/dev/null && source <(kubectl completion zsh)
+(( $+commands[kubectl] )) && source <(kubectl completion zsh)
 alias k=kubectl
-#complete -F __start_kubectl k
 
 #source /etc/zsh_completion.d/fzf-key-bindings
 source /usr/share/doc/fzf/examples/key-bindings.zsh
