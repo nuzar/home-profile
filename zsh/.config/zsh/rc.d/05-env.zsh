@@ -23,6 +23,7 @@ path=(
 fpath=(
     $ZDOTDIR/functions
     $fpath
+    ~/.nix-profile/share/zsh/site-functions
     ~/.local/share/zsh/site-functions
 )
 

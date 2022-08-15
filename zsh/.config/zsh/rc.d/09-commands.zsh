@@ -43,6 +43,5 @@
 (( $+commands[kubectl] )) && source <(kubectl completion zsh)
 alias k=kubectl
 
-#source /etc/zsh_completion.d/fzf-key-bindings
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source ~/.nix-profile/share/fzf/key-bindings.zsh
+source ~/.nix-profile/share/fzf/completion.zsh
