@@ -7,10 +7,10 @@
 
 #zmodload zsh/zprof
 
-DEBUG=
+export _MY_DEBUG=
 
 function debug_log() {
-  if test -z $DEBUG; then
+  if test -z $_MY_DEBUG; then
     return
   fi
   echo "$(date)" "$@"
