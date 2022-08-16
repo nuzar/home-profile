@@ -7,19 +7,20 @@ in
 {
   home = {
     packages = with pkgs; [
-      #antibody
+      antibody
       direnv
       fzf
-      gitFull
+      #gitFull
       go
       htop
       neovim
       ripgrep
       rnix-lsp
       starship
-      v2ray
-      v2ray-domain-list-community
-      zplug
+      #v2ray
+      #v2ray-domain-list-community
+      yarn
+      #zplug
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
       #zsh
     ];
