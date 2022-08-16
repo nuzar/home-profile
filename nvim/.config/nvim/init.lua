@@ -1,4 +1,4 @@
 vim.opt.number=true
 
--- require('plugins')
--- require('nvim_cmp')
+require('plugins')
+--require('nvim_cmp')

@@ -13,7 +13,7 @@
 #setopt INTERACTIVE_COMMENTS
 
 # Don't treat non-executable files in your $path as commands.
-# setopt HASH_EXECUTABLES_ONLY
+setopt HASH_EXECUTABLES_ONLY
 
 # Enable additional glob operators. (Globbing = pattern matching)
 # https://zsh.sourceforge.io/Doc/Release/Expansion.html#Filename-Generation

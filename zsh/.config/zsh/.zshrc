@@ -37,7 +37,7 @@ if [[ PROFILE_IMPORTED -ne 1 ]] {
   local file=
   for file in $ZDOTDIR/rc.d/<->-*.zsh(n); do
     debug_log "load $file"
-    . $file
+    source $file
   done
   debug_log "loading finish"
 } "$@"

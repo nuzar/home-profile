@@ -73,8 +73,6 @@ if [[ -z "$XDG_RUNTIME_DIR" ]]; then
   fi
 fi
 
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
-  . $HOME/.nix-profile/etc/profile.d/nix.sh;
-fi
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+source $HOME/.nix-profile/etc/profile.d/nix.sh;
 source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh

@@ -25,6 +25,7 @@ end
 return packer.startup(function(use)
   -- plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
+  use {"neoclide/coc.nvim", branch="release"}
 
   use 'neovim/nvim-lspconfig'
   use 'fatih/vim-go'
