@@ -40,9 +40,6 @@
 # Use `< file` to quickly view the contents of any file.
 #READNULLCMD=$PAGER  # Set the program to use for this.
 
-(( $+commands[kubectl] )) && source <(kubectl completion zsh)
-alias k=kubectl
-
 source ~/.nix-profile/share/fzf/key-bindings.zsh
 source ~/.nix-profile/share/fzf/completion.zsh
 

@@ -10,13 +10,15 @@ in
       antibody
       direnv
       fzf
-      #gitFull
+      git
       go
       htop
       neovim
+      kubectl
       ripgrep
       rnix-lsp
       starship
+      tealdeer
       #v2ray
       #v2ray-domain-list-community
       yarn
