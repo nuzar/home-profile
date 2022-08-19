@@ -15,6 +15,7 @@ in
       htop
       neovim
       kubectl
+      vimPlugins.packer-nvim
       ripgrep
       rnix-lsp
       starship

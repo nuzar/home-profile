@@ -57,7 +57,7 @@ if [[ -z "$XDG_RUNTIME_DIR" ]]; then
 fi
 
 debug_log "start read nix profiles"
-export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/$USER/channels${NIX_PATH:+:$NIX_PATH}
 source $HOME/.nix-profile/etc/profile.d/nix.sh;
 source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 

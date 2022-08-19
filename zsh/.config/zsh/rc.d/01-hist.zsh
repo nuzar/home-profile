@@ -10,7 +10,8 @@
 # $VENDOR and $OSTYPE let us check what kind of machine we're on.
 if [[ $VENDOR == apple ]]; then
   # On macOS, store it in iCloud, so it syncs across multiple Macs.
-  HISTFILE=~/Library/Mobile\ Documents/com\~apple\~CloudDocs/zsh_history
+  #HISTFILE=~/Library/Mobile\ Documents/com\~apple\~CloudDocs/zsh_history
+  HISTFILE="$HOME/.zsh_history"  
 else
   HISTFILE=${XDG_DATA_HOME:=~/.local/share}/zsh/history
   # HISTFILE="$HOME/.zsh_history"  
@@ -20,7 +21,7 @@ fi
 [[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
 
 # Max number of entries to keep in history file.
-SAVEHIST=$(( 100 * 1000 ))      # Use multiplication for readability.
+SAVEHIST=100000
 
 # Max number of history entries to keep in memory.
 HISTSIZE=$(( 1.2 * SAVEHIST ))  # Zsh recommended value

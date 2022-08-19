@@ -16,7 +16,6 @@ path=(
     $path
     ~/.local/bin
     ~/bin
-    /home/linuxbrew/.linuxbrew/bin(N)   # (N): null if file doesn't exist
 )
 
 # Add your functions to your $fpath, so you can autoload them.
@@ -27,13 +26,13 @@ fpath=(
     ~/.local/share/zsh/site-functions
 )
 
-if command -v brew > /dev/null; then
+#if command -v brew > /dev/null; then
   # Add dirs containing completion functions to your $fpath and they will be
   # picked up automatically when the completion is initialized.
   # Here, we add it to the end of $fpath, so that we use brew's completions
   # only for those commands that zsh doesn't already know how to complete.
-  fpath+=( $HOMEBREW_PREFIX/share/zsh/site-functions )
-fi
+  #fpath+=( $HOMEBREW_PREFIX/share/zsh/site-functions )
+#fi
 
 autoload -Uz compinit
 compinit
