@@ -31,10 +31,11 @@ source $HOME/.alias
 # proxy
 #proxy_host=localhost
 proxy_host="$(tail -1 /etc/resolv.conf | cut -d' ' -f2)"
+proxy_port=50000
 set_proxy() {
-  export http_proxy=http://${proxy_host}:1080
-  export https_proxy=http://${proxy_host}:1080
-  export ALL_PROXY=http://${proxy_host}:1080
+  export http_proxy=http://${proxy_host}:${proxy_port}
+  export https_proxy=http://${proxy_host}:${proxy_port}
+  export ALL_PROXY=http://${proxy_host}:${proxy_port}
 }
 unset_proxy() {
   unset http_proxy

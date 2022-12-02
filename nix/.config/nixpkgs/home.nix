@@ -8,6 +8,7 @@ in
   home = {
     packages = with pkgs; [
       antibody
+      cloc
       direnv
       fzf
       git
@@ -15,16 +16,18 @@ in
       htop
       neovim
       kubectl
+      pgcli
       ripgrep
       rnix-lsp
       starship
       tealdeer
-      #v2ray
-      #v2ray-domain-list-community
+      v2ray
+      v2ray-domain-list-community
       yarn
-      #zplug
+      zplug
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
-      #zsh
+      zsh
+      graphviz
     ];
 
     # source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
