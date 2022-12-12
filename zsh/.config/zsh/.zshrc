@@ -47,3 +47,4 @@ if [[ PROFILE_IMPORTED -ne 1 ]] {
 # It's a good practice to pass "$@" by default. You'd be surprised at all the
 # bugs you avoid this way.
 debug_log "finish anonymous function"
+

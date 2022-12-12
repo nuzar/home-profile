@@ -14,6 +14,7 @@ in
       git
       go
       htop
+      mkcert
       neovim
       kubectl
       pgcli

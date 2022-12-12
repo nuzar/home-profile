@@ -57,6 +57,9 @@ if [[ -z "$XDG_RUNTIME_DIR" ]]; then
   fi
 fi
 
+#export PATH=$PATH:"/mnt/c/Users/myuser/AppData/Local/Programs/Microsoft VS Code/bin"
+test -r $HOME/.profile.local && source $HOME/.profile.local
+
 debug_log "start read nix profiles"
 export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
 source $HOME/.nix-profile/etc/profile.d/nix.sh;
