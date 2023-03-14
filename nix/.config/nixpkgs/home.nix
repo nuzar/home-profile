@@ -8,26 +8,34 @@ in
   home = {
     packages = with pkgs; [
       antibody
-      cloc
+      aria2
+      cloudflared
       direnv
+      du-dust
       fzf
+      flyctl
       git
       go
+      golangci-lint
       htop
+      iperf
+      jq
       mkcert
       neovim
+      nodejs
       kubectl
       pgcli
       ripgrep
-      rnix-lsp
       starship
       tealdeer
+      tokei
       v2ray
       v2ray-domain-list-community
       yarn
       zplug
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
       zsh
+      nix-zsh-completions
       graphviz
     ];
 
@@ -43,7 +51,7 @@ in
 
     username = username;
     homeDirectory = homedir;
-    stateVersion = "22.05";
+    stateVersion = "22.11";
   };
 
   # Let Home Manager install and manage itself.
