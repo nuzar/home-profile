@@ -7,7 +7,6 @@ in
 {
   home = {
     packages = with pkgs; [
-      antibody
       aria2
       cloudflared
       direnv
@@ -35,6 +34,10 @@ in
       zplug
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
       zsh
+      zsh-syntax-highlighting
+      zsh-completions
+      zsh-autosuggestions
+      zsh-history-substring-search
       nix-zsh-completions
       graphviz
     ];
