@@ -16,6 +16,7 @@ path=(
     $path
     ~/.local/bin
     ~/bin
+    #/home/linuxbrew/.linuxbrew/bin(N)   # (N): null if file doesn't exist
 )
 
 # Add your functions to your $fpath, so you can autoload them.

@@ -7,25 +7,39 @@ in
 {
   home = {
     packages = with pkgs; [
-      antibody
+      aria2
+      cloudflared
       direnv
+      du-dust
       fzf
+      flyctl
       git
       go
+      golangci-lint
       htop
+      iperf
+      jq
+      mkcert
       neovim
+      nodejs
       kubectl
-      vimPlugins.packer-nvim
+      pgcli
       ripgrep
-      rnix-lsp
       starship
       tealdeer
-      #v2ray
-      #v2ray-domain-list-community
+      tokei
+      v2ray
+      v2ray-domain-list-community
       yarn
-      #zplug
+      zplug
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
-      #zsh
+      zsh
+      zsh-syntax-highlighting
+      zsh-completions
+      zsh-autosuggestions
+      zsh-history-substring-search
+      nix-zsh-completions
+      graphviz
     ];
 
     # source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
@@ -40,7 +54,7 @@ in
 
     username = username;
     homeDirectory = homedir;
-    stateVersion = "22.05";
+    stateVersion = "22.11";
   };
 
   # Let Home Manager install and manage itself.

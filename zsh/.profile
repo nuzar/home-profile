@@ -31,10 +31,11 @@ source $HOME/.alias
 # proxy
 #proxy_host=localhost
 proxy_host="$(tail -1 /etc/resolv.conf | cut -d' ' -f2)"
+proxy_port=50000
 set_proxy() {
-  export http_proxy=http://${proxy_host}:1080
-  export https_proxy=http://${proxy_host}:1080
-  export ALL_PROXY=http://${proxy_host}:1080
+  export http_proxy=http://${proxy_host}:${proxy_port}
+  export https_proxy=http://${proxy_host}:${proxy_port}
+  export ALL_PROXY=http://${proxy_host}:${proxy_port}
 }
 unset_proxy() {
   unset http_proxy
@@ -55,6 +56,9 @@ if [[ -z "$XDG_RUNTIME_DIR" ]]; then
     fi
   fi
 fi
+
+#export PATH=$PATH:"/mnt/c/Users/myuser/AppData/Local/Programs/Microsoft VS Code/bin"
+test -r $HOME/.profile.local && source $HOME/.profile.local
 
 debug_log "start read nix profiles"
 export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/$USER/channels${NIX_PATH:+:$NIX_PATH}

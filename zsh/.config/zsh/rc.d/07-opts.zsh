@@ -14,6 +14,8 @@
 
 # Don't treat non-executable files in your $path as commands.
 setopt HASH_EXECUTABLES_ONLY
+# https://wiki.archlinux.org/title/zsh#Persistent_rehash
+zstyle ':completion:*' rehash true
 
 # Enable additional glob operators. (Globbing = pattern matching)
 # https://zsh.sourceforge.io/Doc/Release/Expansion.html#Filename-Generation
