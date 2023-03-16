@@ -31,7 +31,6 @@ in
       v2ray
       v2ray-domain-list-community
       yarn
-      zplug
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
       zsh
       zsh-syntax-highlighting
