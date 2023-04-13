@@ -8,6 +8,7 @@ in
   home = {
     packages = with pkgs; [
       aria2
+      buf
       cloudflared
       direnv
       du-dust
@@ -23,6 +24,7 @@ in
       neovim
       nodejs
       kubectl
+      pipx
       pgcli
       ripgrep
       starship
