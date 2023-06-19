@@ -26,12 +26,15 @@ in
       kubectl
       pipx
       pgcli
+      railway
       ripgrep
+      rnix-lsp
       starship
       tealdeer
       tokei
       v2ray
       v2ray-domain-list-community
+      wrk
       yarn
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
       zsh
@@ -41,6 +44,8 @@ in
       zsh-history-substring-search
       nix-zsh-completions
       graphviz
+      doh-proxy-rust
+      q
     ];
 
     # source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
