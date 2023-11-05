@@ -1,7 +1,7 @@
 {
-  "coc.nvim": { "branch": "release", "commit": "bbaa1d5d1ff3cbd9d26bb37cfda1a990494c4043" },
-  "fzf": { "branch": "master", "commit": "352ea072269dfe2a3c429785a95a2f22887ccda3" },
-  "lazy.nvim": { "branch": "main", "commit": "e27c9df5fe039e9d2833ef4fcf7305595d5ccda7" },
-  "nvim-lspconfig": { "branch": "master", "commit": "649137cbc53a044bffde36294ce3160cb18f32c7" },
-  "vim-go": { "branch": "master", "commit": "b8a41085bfd67fee97ad075c6df65590ce7417a7" }
+  "coc.nvim": { "branch": "release", "commit": "7b9e1ef0a1399907c51d23b6080b94a5aba4a654" },
+  "fzf": { "branch": "master", "commit": "a8186531740326e4eace928b84f78d130e67c319" },
+  "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
+  "nvim-lspconfig": { "branch": "master", "commit": "b44737605807023d32e6310b87ba69f4dbf10e0e" },
+  "vim-go": { "branch": "master", "commit": "1401b576c6ac382529188d3d26cff866139f2f9a" }
 }

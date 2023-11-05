@@ -7,35 +7,37 @@ in
 {
   home = {
     packages = with pkgs; [
-      aria2
+      #aria2
       cloudflared
-      direnv
+      #direnv
       du-dust
-      fzf
+      #fzf
       flyctl
-      git
+      #git
       go
       golangci-lint
-      htop
+      #htop
       iperf
-      jq
+      #jq
       mkcert
       neovim
-      nodejs
-      kubectl
-      pgcli
-      ripgrep
+      netcat
+      #nodejs
+      #kubectl
+      #pgcli
+      #ripgrep
+      rnix-lsp
       starship
-      tealdeer
+      #tealdeer
       tokei
-      v2ray
+      #v2ray
       v2ray-domain-list-community
-      yarn
+      #yarn
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
-      zsh
-      zsh-syntax-highlighting
+      #zsh
+      #zsh-syntax-highlighting
       zsh-completions
-      zsh-autosuggestions
+      #zsh-autosuggestions
       zsh-history-substring-search
       nix-zsh-completions
       graphviz

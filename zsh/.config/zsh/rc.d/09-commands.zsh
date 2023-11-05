@@ -40,8 +40,10 @@
 # Use `< file` to quickly view the contents of any file.
 #READNULLCMD=$PAGER  # Set the program to use for this.
 
-source ~/.nix-profile/share/fzf/key-bindings.zsh
-source ~/.nix-profile/share/fzf/completion.zsh
+if test -d ~/.nix-profile/share/fzf; then
+	source ~/.nix-profile/share/fzf/key-bindings.zsh
+	source ~/.nix-profile/share/fzf/completion.zsh
+fi
 
 # golang
 #eval `go env`
