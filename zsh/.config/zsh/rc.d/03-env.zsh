@@ -4,6 +4,8 @@
 # Environment variables
 #
 
+export LANG=en_US.utf8
+
 # -U ensures each entry in these is Unique (that is, discards duplicates).
 export -U PATH path FPATH fpath MANPATH manpath
 export -UT INFOPATH infopath  # -T creates a "tied" pair; see below.
@@ -13,9 +15,8 @@ export -UT INFOPATH infopath  # -T creates a "tied" pair; see below.
 # Note that each value in an array is expanded separately. Thus, we can use ~
 # for $HOME in each $path entry.
 path=(
-    $path
     ~/.local/bin
-    ~/bin
+    $path
     #/home/linuxbrew/.linuxbrew/bin(N)   # (N): null if file doesn't exist
 )
 

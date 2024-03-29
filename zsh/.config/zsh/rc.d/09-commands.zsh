@@ -40,34 +40,3 @@
 # Use `< file` to quickly view the contents of any file.
 #READNULLCMD=$PAGER  # Set the program to use for this.
 
-source ~/.nix-profile/share/fzf/key-bindings.zsh
-source ~/.nix-profile/share/fzf/completion.zsh
-#
-# direnv
-eval "$(direnv hook zsh)"
-
-# golang
-#eval `go env`
-export PATH=$PATH:$(go env GOPATH)/bin
-# used by go-torch
-#export PATH=$PATH:~/tools/FlameGraph
-
-# rust
-export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-test -r $HOME/.cargo/env && source $HOME/.cargo/env
-
-# python
-export PYCURL_SSL_LIBRARY=nss
-if test -d "$HOME/.pyenv"; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init - zsh)"
-  eval "$(pyenv init --path zsh)"
-fi
-
-# js
-export PATH=$PATH:~/.yarn/bin
-
-# java
-#export JAVA_HOME=/etc/alternatives/java_sdk

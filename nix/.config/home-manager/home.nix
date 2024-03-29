@@ -7,45 +7,55 @@ in
 {
   home = {
     packages = with pkgs; [
-      aria2
+      #aria2
       buf
+      bun
+      clash-meta
       cloudflared
-      direnv
+      #direnv
       du-dust
-      fzf
-      flyctl
-      git
-      go
+      exercism
+      #fzf
+      #flyctl
+      #git
+      #go
       golangci-lint
-      htop
-      iperf
-      jq
+      #htop
+      #iperf
+      #jq
       mkcert
-      neovim
-      nodejs
-      kubectl
-      pipx
-      pgcli
-      railway
-      ripgrep
-      rnix-lsp
-      starship
-      tealdeer
-      tokei
+      #neovim
+      #nodejs
+      #kubectl
+      ollama
+      #pipx
+      #pgcli
+      #protoc-gen-go
+      #protoc-gen-go-grpc
+      #railway
+      #ripgrep
+      rye
+      #starship
+      #tealdeer
+      #tokei
+      uv
       v2ray
       v2ray-domain-list-community
+      v2ray-geoip
       wrk
-      yarn
+      #yarn
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
-      zsh
-      zsh-syntax-highlighting
+      #zsh
+      #zsh-syntax-highlighting
       zsh-completions
-      zsh-autosuggestions
+      #zsh-autosuggestions
       zsh-history-substring-search
       nix-zsh-completions
       graphviz
-      doh-proxy-rust
+      #doh-proxy-rust
       q
+      zig
+      zls
     ];
 
     # source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh

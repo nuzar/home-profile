@@ -1,1 +1,5 @@
 .zcompdump*
+rust/.cargo/*
+!rust/.cargo/config.toml
+python/.config/pdm/*
+!python/.config/pdm/config.toml

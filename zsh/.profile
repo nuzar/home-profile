@@ -1,69 +1,28 @@
-export _MY_DEBUG=
-function debug_log() {
-  if test -z $_MY_DEBUG; then
-    return
-  fi
-  echo "$(date)" "$@"
-}
-
-debug_log "start read .profile"
-test -z "$PROFILEREAD" && . /etc/profile || true
-
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-
-export TMUX_TMPDIR="/tmp"
-
-# ssh
-if ! pgrep -u "$USER" ssh-agent &> /dev/null; then
-    ssh-agent > "/tmp/ssh-agent.env"
-fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    eval "$(<"/tmp/ssh-agent.env")" > /dev/null
-fi
+#source /etc/profile
 
 # alias
-source $HOME/.alias
+test -r $HOME/.alias && source $HOME/.alias
 
 # proxy
-#proxy_host=localhost
-proxy_host="$(tail -1 /etc/resolv.conf | cut -d' ' -f2)"
+proxy_host=127.0.0.1
+#proxy_host="$(tail -1 /etc/resolv.conf | cut -d' ' -f2)"
 proxy_port=50000
 set_proxy() {
   export http_proxy=http://${proxy_host}:${proxy_port}
   export https_proxy=http://${proxy_host}:${proxy_port}
-  export ALL_PROXY=http://${proxy_host}:${proxy_port}
+  export all_proxy=http://${proxy_host}:${proxy_port}
+  export HTTP_PROXY=$http_proxy
+  export HTTPS_PROXY=$https_proxy
+  export ALL_PROXY=$all_proxy
 }
 unset_proxy() {
   unset http_proxy
   unset https_proxy
+  unset all_proxy
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
   unset ALL_PROXY
 }
 
-# local
-export PATH=$PATH:~/.local/bin
-
-# podman
-if [[ -z "$XDG_RUNTIME_DIR" ]]; then
-  export XDG_RUNTIME_DIR=/run/user/$UID
-  if [[ ! -d "$XDG_RUNTIME_DIR" ]]; then
-    export XDG_RUNTIME_DIR=/tmp/$USER-runtime
-    if [[ ! -d "$XDG_RUNTIME_DIR" ]]; then
-      mkdir -m 0700 "$XDG_RUNTIME_DIR"
-    fi
-  fi
-fi
-
 #export PATH=$PATH:"/mnt/c/Users/myuser/AppData/Local/Programs/Microsoft VS Code/bin"
 test -r $HOME/.profile.local && source $HOME/.profile.local
-
-debug_log "start read nix profiles"
-export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/$USER/channels${NIX_PATH:+:$NIX_PATH}
-source $HOME/.nix-profile/etc/profile.d/nix.sh;
-source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-
-debug_log "finish read .profile"
-

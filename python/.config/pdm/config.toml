@@ -1,0 +1,5 @@
+[pypi]
+url = "https://mirrors.cernet.edu.cn/pypi/web/simple"
+
+[venv]
+with_pip = true
