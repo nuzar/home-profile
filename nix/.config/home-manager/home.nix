@@ -13,15 +13,17 @@ in
       clash-meta
       cloudflared
       #direnv
+      duckdb
       du-dust
       exercism
       #fzf
-      #flyctl
+      flyctl
       #git
       #go
       golangci-lint
       #htop
       #iperf
+      iredis
       #jq
       mkcert
       #neovim
@@ -54,6 +56,7 @@ in
       graphviz
       #doh-proxy-rust
       q
+      wrangler_1
       zig
       zls
     ];
@@ -75,4 +78,19 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+    systemd.user.services.clash-meta = {
+    Unit = {
+      Description = "clash meta";
+      After = ["network.target" "NetworkManager.service" "systemd-networkd.service"];
+      Wants = "network-online.target";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+    Service = {
+      ExecStart = "%h/.nix-profile/bin/clash-meta -d %h/.config/mihomo";
+      ExecReload = "/bin/kill -HUP $MAINPID";
+    };
+  };
 }
