@@ -6,57 +6,72 @@ let
 in
 {
   home = {
+    username = username;
+    homeDirectory = homedir;
+    stateVersion = "23.11";
+
     packages = with pkgs; [
-      #aria2
+      aria2
       buf
       bun
-      clash-meta
+      capnproto
       cloudflared
-      #direnv
+      direnv
+      #devenv
       duckdb
       du-dust
       exercism
-      #fzf
+      fzf
       flyctl
-      #git
-      #go
+      git
+      git-lfs
+      go
       golangci-lint
-      #htop
-      #iperf
+      htop
+      iperf
       iredis
-      #jq
+      jq
       mkcert
-      #neovim
-      #nodejs
-      #kubectl
-      ollama
-      #pipx
-      #pgcli
+      mongosh
+      neovim
+      nodejs
+      kubectl
+      nil
+      oapi-codegen
+      pgcli
       #protoc-gen-go
       #protoc-gen-go-grpc
       #railway
-      #ripgrep
+      ripgrep
       rye
-      #starship
-      #tealdeer
-      #tokei
+      starship
+      smartdns
+      tealdeer
+      tokei
+      # python dev
+      pipx
       uv
+      # proxies
+      clash-meta
+      sing-box
+      sing-geoip
+      sing-geosite
       v2ray
       v2ray-domain-list-community
       v2ray-geoip
       wrk
-      #yarn
+      yarn
+      yamllint
       # echo $HOME/.nix-profile/bin/zsh | sudo tee -a /etc/shells
       #zsh
-      #zsh-syntax-highlighting
+      zsh-syntax-highlighting
       zsh-completions
-      #zsh-autosuggestions
+      zsh-autosuggestions
       zsh-history-substring-search
       nix-zsh-completions
       graphviz
       #doh-proxy-rust
       q
-      wrangler_1
       zig
       zls
     ];
@@ -70,16 +85,12 @@ in
     #  LC_ALL = locale;
     #  TMUX_TMPDIR = "/tmp";
     #};
-
-    username = username;
-    homeDirectory = homedir;
-    stateVersion = "22.11";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-    systemd.user.services.clash-meta = {
+  systemd.user.services.clash-meta = {
     Unit = {
       Description = "clash meta";
       After = ["network.target" "NetworkManager.service" "systemd-networkd.service"];
@@ -91,6 +102,20 @@ in
     Service = {
       ExecStart = "%h/.nix-profile/bin/clash-meta -d %h/.config/mihomo";
       ExecReload = "/bin/kill -HUP $MAINPID";
+      # copied from traefik https://github.com/traefik/traefik/blob/master/contrib/systemd/traefik.service
+      # lock down system access
+      # prohibit any operating system and configuration modification
+      ProtectSystem="strict";
+      # create separate, new (and empty) /tmp and /var/tmp filesystems
+      PrivateTmp=true;
+      # make /home directories inaccessible
+      #ProtectHome=true;
+      # turns off access to physical devices (/dev/...)
+      PrivateDevices=true;
+      # make kernel settings (procfs and sysfs) read-only
+      ProtectKernelTunables=true;
+      # make cgroups /sys/fs/cgroup read-only
+      ProtectControlGroups=true;
     };
   };
 }

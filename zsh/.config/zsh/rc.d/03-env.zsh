@@ -4,7 +4,7 @@
 # Environment variables
 #
 
-export LANG=en_US.utf8
+export LANG=en_US.UTF-8
 
 # -U ensures each entry in these is Unique (that is, discards duplicates).
 export -U PATH path FPATH fpath MANPATH manpath
