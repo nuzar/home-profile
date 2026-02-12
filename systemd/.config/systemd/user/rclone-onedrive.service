@@ -1,0 +1,18 @@
+[Unit]
+Description=Rclone mount Onedrive
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+AssertPathIsDirectory=%h/Documents/onedrive
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rclone mount --vfs-cache-mode full onedrive: %h/Documents/onedrive
+# Perform lazy unmount
+ExecStop=/usr/bin/fusermount -zu %h/Documents/onedrive
+# Restart the service whenever rclone exists with non-zero exit code
+Restart=on-failure
+RestartSec=15
+
+[Install]
+# Autostart after reboot
+WantedBy=multi-user.target

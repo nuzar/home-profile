@@ -24,6 +24,7 @@ path=(
 fpath=(
     $ZDOTDIR/functions
     $fpath
+    /home/linuxbrew/.linuxbrew/share/zsh/site-functions
     ~/.nix-profile/share/zsh/site-functions
     ~/.local/share/zsh/site-functions
 )

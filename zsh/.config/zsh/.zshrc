@@ -55,44 +55,5 @@ debug_log "finish anonymous function"
 
 
 # direnv
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
-
-# golang
-#eval `go env`
-export PATH=$PATH:$(go env GOPATH)/bin
-# used by go-torch
-#export PATH=$PATH:~/tools/FlameGraph
-
-
-# js
-export PATH=$PATH:~/.yarn/bin
-export PATH=$HOME/.npm-global/bin:$PATH
-
-# java
-#export JAVA_HOME=/etc/alternatives/java_sdk
-
-
-# nvim
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-
-# python
-export PYCURL_SSL_LIBRARY=nss
-if test -d "$HOME/.pyenv"; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init - zsh)"
-  eval "$(pyenv init --path zsh)"
-fi
-
-
-# rust
-export RUSTUP_DIST_SERVER=https://mirrors.cernet.edu.cn/rustup
-export RUSTUP_UPDATE_ROOT=https://mirrors.cernet.edu.cn/rustup/rustup
-test -r $HOME/.cargo/env && source $HOME/.cargo/env
-
-
-# tmux
-export TMUX_TMPDIR="/tmp"

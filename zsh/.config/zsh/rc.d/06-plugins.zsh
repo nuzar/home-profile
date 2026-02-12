@@ -8,10 +8,14 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 
 zsh_plugins=(
-	$HOME/.nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-	$HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	$HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	$HOME/.nix-profile/share/fzf/key-bindings.zsh
+	# $HOME/.nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+	/home/linuxbrew/.linuxbrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+	#$HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	#$HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	# $HOME/.nix-profile/share/fzf/key-bindings.zsh
+	/home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.zsh
 )
 
 for _plug in "${zsh_plugins[@]}";do 

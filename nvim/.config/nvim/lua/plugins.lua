@@ -24,6 +24,7 @@ require("lazy").setup({
   'neovim/nvim-lspconfig',
   'fatih/vim-go',
   'junegunn/fzf',
+  --[[
   {
     "m4xshen/hardtime.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
@@ -37,6 +38,7 @@ require("lazy").setup({
 	},
     }
   },
+  ]]
 })
 
 require'nvim-treesitter.configs'.setup {

@@ -1,0 +1,17 @@
+[Unit]
+Description=SmartDNS Server
+After=network.target 
+StartLimitBurst=0
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+PIDFile=/run/user/$UID/smartdns.pid
+ExecStart=%h/.nix-profile/bin/smartdns -c %h/.config/smartdns/smartdns.conf -f -p -
+Restart=always
+RestartSec=2
+TimeoutStopSec=15
+
+[Install]
+WantedBy=default.target
+Alias=smartdns.service

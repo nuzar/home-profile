@@ -1,0 +1,18 @@
+[Unit]
+Description=V2Ray Service
+Documentation=https://www.v2fly.org/
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+#User=nobody
+#CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+#AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+#NoNewPrivileges=true
+#ExecStart=%h/.nix-profile/bin/v2ray run -d %h/.config/v2ray
+ExecStart=%h/.config/v2ray/v2ray run -d %h/.config/v2ray
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=default.target
